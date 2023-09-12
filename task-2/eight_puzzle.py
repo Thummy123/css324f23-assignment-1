@@ -50,5 +50,20 @@ def h1(s):
 
 def h3(s):
     # implement this function
+    goal = (1,2,3,4,5,6,7,8,0)
     board, _, _ = s
-    return 0
+    rt = 0
+    ct = 0
+    for i in range(0,9):
+        if board[i] == 0:
+            continue
+        goalcolumnidx = (board[i]-1) % 3
+        currentcolumnidx = i%3
+        columnsdiff = abs(goalcolumnidx-currentcolumnidx)
+        ct += columnsdiff   
+        goalrowidx = (board[i]-1) // 3
+        currentrowidx = i//3
+        rowsdiff = abs(goalrowidx-currentrowidx)  
+        rt += rowsdiff
+
+    return rt+ ct
